@@ -1,0 +1,147 @@
+TKinter is a ToolKit for developing GUI applications.
+Tkinter is the standard GUI library for Python. 
+Python when combined with Tkinter provides a fast and easy way to create GUI applications.
+
+Concepts with Examples:
+------------------------------------------------------------------------------------------------------------------------------------
+first_tk.py
+-----------
+from tkinter import *
+app_window = Tk()
+# Statements for adding widgets to the GUI app.
+# That is, the code for various controls, such as frame, label, entry, button and text boxes are typed here.
+# Lastly, The below statement keeps the window alive.
+app_window.mainloop()                
+             
+------------------------------------------------------------------------------------------------------------------------------------
+# note: TKinter pack method --> widget.pack( pack_options )
+# This geometry manager organizes widgets in blocks before placing them in the parent(app_window) widget.
+
+button_widget.py
+----------------
+from tkinter import *
+import tkinter.messagebox as mb
+
+app_window = Tk()
+
+def helloCallBack():
+	mb.showinfo( "MB_Title_Hello Python", "MB_MSG_Hello World")
+
+B = Button(app_window, text ="button_text_hello", command = helloCallBack)
+B.pack()       # This geometry manager organizes widgets in blocks before placing them in the parent(app_window) widget.
+
+app_window.mainloop()
+
+------------------------------------------------------------------------------------------------------------------------------------
+frame_widget.py
+---------------
+from tkinter import *
+
+app_window = Tk()
+
+topframe = Frame(app_window)
+topframe.pack(side=TOP)
+
+"""
+leftframe = Frame(app_window)
+leftframe.pack(side=LEFT)
+
+rightframe = Frame(app_window)
+rightframe.pack(side=RIGHT)
+
+bottomframe = Frame(app_window)
+bottomframe.pack(side=BOTTOM)
+"""
+
+redbutton = Button(topframe, text="Red", fg="red")
+redbutton.pack()
+
+"""
+greenbutton = Button(leftframe, text="Brown", fg="brown")
+greenbutton.pack()
+
+bluebutton = Button(rightframe, text="Blue", fg="blue")
+bluebutton.pack()
+
+blackbutton = Button(bottomframe, text="Black", fg="black")
+blackbutton.pack()
+"""
+
+app_window.mainloop()
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Entry vs Text vs Label:
+-----------------------
+Entry widget is used to accept single-line text strings from a user.
+If you want to display multiple lines of text that can be edited, then you should use the Text widget.
+If you want to display one or more lines of text that cannot be modified by the user, then you should use the Label widget.
+
+entry_widget.py
+---------------
+from tkinter import *
+
+app_window = Tk()
+label1 = Label(app_window, text="User Name")
+label1.pack( side = LEFT)
+entry1 = Entry(app_window, bd =5)   # bd -- border size 5 pixels
+entry1.pack(side = RIGHT)
+
+app_window.mainloop()
+
+text_widget.py
+--------------
+from tkinter import *
+
+app_window = Tk()
+text = Text(app_window)
+text.insert(INSERT, "Python is \n")
+text.insert(INSERT, "easy \n")
+text.insert(END, "to learn....")
+text.pack()
+
+app_window.mainloop()
+
+label_widget.py
+---------------
+from tkinter import *
+
+app_window = Tk()
+var = StringVar()
+label = Label( app_window, textvariable=var, relief=RAISED )
+
+var.set("Hello World !!")
+label.pack()
+
+app_window.mainloop()
+
+------------------------------------------------------------------------------------------------------------------------------------
+# note: TKinter grid method --> widget.grid( grid_options )
+# This geometry manager organizes widgets in a table-like structure in the parent(app_window) widget.
+# Python ord() and chr() are built-in functions. They are used to convert a character to an int and an int to a character.
+>>>
+>>> x = ord('A')
+>>> print(x)
+65
+>>>
+>>> y = chr(65)
+>>> print(y)
+A
+>>>
+Label
+----- 
+anchor:   By default, anchor centers the text in the available space.
+bg:       Background color.
+bd:       Border around the indicator.
+text:     Displays one or more lines of text in a label widget.
+
+Entry
+-----
+insertwidth:  Width of the insertion cursor. Usually one or two pixels.
+justify:      Defines how to align multiple lines of text.
+
+Label --> text --> display
+Entry --> textvariable --> input
+textvariable is linked to text --> therefore Entry is linked to Label.
+
+
